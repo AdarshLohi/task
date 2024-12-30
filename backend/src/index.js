@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 require('dotenv').config()
+import apiRoutes from './routes/index.js';
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -9,9 +10,7 @@ const port = process.env.PORT || 3000
 app.use(cors())
 app.use(bodyParser.json())
 
-app.get('/',(re,res) => {
-    res.send('Heloo')
-})
+app.use('/task',apiRoutes)
 
 app.listen(port, () => {
     console.log(`Server is started on ${port}`)
